@@ -2,46 +2,34 @@ package br.com.cielo.bootcampdesafio02.api.service.validation.cliente;
 
 import br.com.cielo.bootcampdesafio02.api.controller.exception.FieldMessage;
 import br.com.cielo.bootcampdesafio02.domain.entity.Cliente;
-import br.com.cielo.bootcampdesafio02.domain.entity.Empresa;
 import br.com.cielo.bootcampdesafio02.domain.repository.ClienteRepository;
-import br.com.cielo.bootcampdesafio02.dto.filters.cliente.ClienteUpdateDTO;
-
-import jakarta.servlet.http.HttpServletRequest;
+import br.com.cielo.bootcampdesafio02.dto.filters.cliente.ClienteInsertDTO;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.HandlerMapping;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-public class ClienteUpdateValidator  implements ConstraintValidator<ClienteUpdateValid, ClienteUpdateDTO> {
+public class ClienteInsertValidator implements ConstraintValidator<ClienteInsertValid, ClienteInsertDTO> {
 
-    @Autowired
-    private HttpServletRequest request;
     @Autowired
     private ClienteRepository repository;
 
+
     @Override
-    public void initialize(ClienteUpdateValid constraintAnnotation) {
+    public void initialize(ClienteInsertValid constraintAnnotation) {
 
     }
 
     @Override
-    public boolean isValid(ClienteUpdateDTO clienteUpdateDTO, ConstraintValidatorContext constraintValidatorContext) {
-
-        var uriVars =  (Map<String,String>)   request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
-        Long clienteId = Long.parseLong( uriVars.get("id"));
+    public boolean isValid(ClienteInsertDTO clienteInsertDTO, ConstraintValidatorContext constraintValidatorContext) {
         List<FieldMessage> list = new ArrayList<>();
 
-        Cliente cliente = repository.findByCpf(clienteUpdateDTO.getCpf());
-
-        if(cliente!=null && clienteId != cliente.getId()){
+        Cliente cliente = repository.findByCpf(clienteInsertDTO.getCpf());
+        if(cliente!=null){
             list.add(new FieldMessage("cpf","cpf existente"));
         }
-
-
         for (FieldMessage e : list) {
             constraintValidatorContext.disableDefaultConstraintViolation();
             constraintValidatorContext.buildConstraintViolationWithTemplate(e.getMessage()).addPropertyNode(e.getFieldName())
@@ -49,4 +37,5 @@ public class ClienteUpdateValidator  implements ConstraintValidator<ClienteUpdat
         }
         return list.isEmpty();
     }
+
 }
