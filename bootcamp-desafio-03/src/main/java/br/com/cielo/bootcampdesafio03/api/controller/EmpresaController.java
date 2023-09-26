@@ -1,11 +1,11 @@
-package br.com.cielo.bootcampdesafio02.api.controller;
+package br.com.cielo.bootcampdesafio03.api.controller;
 
 
-import br.com.cielo.bootcampdesafio02.api.service.EmpresaService;
-import br.com.cielo.bootcampdesafio02.dto.ClienteDTO;
-import br.com.cielo.bootcampdesafio02.dto.EmpresaDTO;
-import br.com.cielo.bootcampdesafio02.dto.filters.empresa.EmpresaInsertDTO;
-import br.com.cielo.bootcampdesafio02.dto.filters.empresa.EmpresaUpdateDTO;
+import br.com.cielo.bootcampdesafio03.api.service.EmpresaService;
+import br.com.cielo.bootcampdesafio03.dto.ClienteDTO;
+import br.com.cielo.bootcampdesafio03.dto.EmpresaDTO;
+import br.com.cielo.bootcampdesafio03.dto.filters.empresa.EmpresaInsertDTO;
+import br.com.cielo.bootcampdesafio03.dto.filters.empresa.EmpresaUpdateDTO;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
