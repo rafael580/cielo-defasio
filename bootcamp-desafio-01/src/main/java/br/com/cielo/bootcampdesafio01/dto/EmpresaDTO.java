@@ -24,23 +24,22 @@ public class EmpresaDTO implements Serializable {
     @Size(min = 0,max = 50,message = "maximo de 50 caracteres")
     @NotBlank(message = "razao social requerido")
     private String razaoSocial;
-    @Pattern(regexp = "/^\\d+$/")
     @Size(min = 0,max = 4,message = "maximo de 4 numeros")
     @NotBlank(message = "mcc requerido")
-    private Integer mcc;
+    private String mcc;
     @Size(min = 11,max = 11,message = "minimo 11")
     @NotBlank(message = "cpf requerido")
     private String cpf;
     @Size(min = 0,max = 50,message = "maximo de 50 caracteres")
     @NotBlank(message = "contrato estabelecido requerido")
     private String contratoEstabelecido;
-    @Pattern(regexp="/^([a-z]){1,}([a-z0-9._-]){1,}([@]){1}([a-z]){2,}([.]){1}([a-z]){2,}([.]?){1}([a-z]?){2,}$/i")
+    @Pattern(regexp="^([a-z]){1,}([a-z0-9._-]){1,}([@]){1}([a-z]){2,}([.]){1}([a-z]){2,}([.]?){1}([a-z]?){2,}$")
     @NotBlank(message = "email requerido")
     private String emailEstabelecido;
 
     public EmpresaDTO(){}
 
-    public EmpresaDTO(Long id, String cnpj, String razaoSocial, Integer mcc, String cpf, String contratoEstabelecido, String emailEstabelecido) {
+    public EmpresaDTO(Long id, String cnpj, String razaoSocial, String mcc, String cpf, String contratoEstabelecido, String emailEstabelecido) {
         this.id = id;
         this.cnpj = cnpj;
         this.razaoSocial = razaoSocial;

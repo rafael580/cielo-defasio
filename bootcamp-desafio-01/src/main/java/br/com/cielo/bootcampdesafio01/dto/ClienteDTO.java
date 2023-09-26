@@ -21,22 +21,22 @@ public class ClienteDTO implements Serializable {
     @Size(min = 11,max = 11,message = "minimo 11")
     @NotBlank(message = "cpf requerido")
     private String cpf;
-    @Pattern(regexp = "/^\\d+$/")
     @Size(min = 0,max = 4,message = "maximo de 4 numeros")
     @NotBlank(message = "mcc requerido")
-    private Integer mcc;
+    private String mcc;
     @Size(min = 0,max = 50,message = "maximo de 50 caracteres")
     @NotBlank(message = "nome requerido")
     private String nome;
-    @Pattern(regexp="/^([a-z]){1,}([a-z0-9._-]){1,}([@]){1}([a-z]){2,}([.]){1}([a-z]){2,}([.]?){1}([a-z]?){2,}$/i")
+
     @NotBlank(message = "email requerido")
+    @Pattern(regexp="^([a-z]){1,}([a-z0-9._-]){1,}([@]){1}([a-z]){2,}([.]){1}([a-z]){2,}([.]?){1}([a-z]?){2,}$")
     private String email;
 
 
     public ClienteDTO() {
     }
 
-    public ClienteDTO( Long id, String cpf, Integer mcc, String nome, String email) {
+    public ClienteDTO( Long id, String cpf, String mcc, String nome, String email) {
         this.id = id;
         this.cpf = cpf;
         this.mcc = mcc;

@@ -34,7 +34,7 @@ public final class Empresa extends Usuario implements Serializable {
         public Empresa(){}
 
 
-    public Empresa(Long id,String cnpj, String razaoSocial, Integer mcc, String cpf, String contratoEstabelecido, String emailEstabelecido) {
+    public Empresa(Long id,String cnpj, String razaoSocial, String mcc, String cpf, String contratoEstabelecido, String emailEstabelecido) {
 
             super(mcc,cpf);
             this.id = id;

@@ -29,7 +29,7 @@ public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert
 
         Cliente cliente = repository.findByCpf(clienteInsertDTO.getCpf());
         if(cliente!=null){
-            list.add(new FieldMessage("cnpj","cnpj existente"));
+            list.add(new FieldMessage("cpf","cpf existente"));
         }
         for (FieldMessage e : list) {
             constraintValidatorContext.disableDefaultConstraintViolation();

@@ -7,14 +7,14 @@ import lombok.Data;
 public sealed class Usuario permits Cliente,Empresa{
 
 
-    private Integer mcc;
+    private String mcc;
     private String cpf;
 
 
     public Usuario() {
     }
 
-    public Usuario(Integer mcc, String cpf) {
+    public Usuario(String mcc, String cpf) {
         this.mcc = mcc;
         this.cpf = cpf;
     }

@@ -34,7 +34,7 @@ public final class Cliente extends Usuario implements Serializable {
     public Cliente(){}
 
 
-    public Cliente(Long id,String cpf, Integer mcc, String nome, String email) {
+    public Cliente(Long id,String cpf, String mcc, String nome, String email) {
 
         super(mcc,cpf);
         this.id = id;
