@@ -21,6 +21,7 @@ public class ClienteDTO implements Serializable {
     @Size(min = 11,max = 11,message = "minimo 11")
     @NotBlank(message = "cpf requerido")
     private String cpf;
+
     @Size(min = 0,max = 4,message = "maximo de 4 numeros")
     @NotBlank(message = "mcc requerido")
     private String mcc;
