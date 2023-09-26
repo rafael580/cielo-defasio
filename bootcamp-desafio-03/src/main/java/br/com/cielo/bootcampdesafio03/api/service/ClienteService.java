@@ -2,13 +2,13 @@ package br.com.cielo.bootcampdesafio03.api.service;
 
 import br.com.cielo.bootcampdesafio03.api.service.exceptions.DataBaseException;
 import br.com.cielo.bootcampdesafio03.api.service.exceptions.EntityNotFound;
-import br.com.cielo.bootcampdesafio03.data_structure.Fila;
 import br.com.cielo.bootcampdesafio03.domain.entity.Cliente;
 import br.com.cielo.bootcampdesafio03.domain.repository.ClienteRepository;
 
 import br.com.cielo.bootcampdesafio03.dto.ClienteDTO;
 import br.com.cielo.bootcampdesafio03.dto.filters.cliente.ClienteInsertDTO;
 import br.com.cielo.bootcampdesafio03.dto.filters.cliente.ClienteUpdateDTO;
+
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,17 +24,12 @@ import java.util.Optional;
 public class ClienteService {
 
 
+    private String queueUrl = "https://sqs.us-east-1.amazonaws.com/096022023871/fila_exemplo.fifo";
 
-    Fila<ClienteDTO> clienteDTOFila = new Fila<>();
 
     @Autowired
     private ClienteRepository repository;
 
-
-    //FILA DE CLIENTES
-    public Fila<ClienteDTO> filaClientes(){
-        return this.clienteDTOFila;
-    }
 
     public Page<ClienteDTO> findAllPaged(Pageable pageAble){
         Page<Cliente> obj = repository.findAll( pageAble);
@@ -55,7 +50,7 @@ public class ClienteService {
         copyDtoToEntity(dto,cliente);
         cliente =  repository.save(cliente);
         ClienteDTO clienteDTO =  new ClienteDTO(cliente);
-        clienteDTOFila.inserir(clienteDTO);
+
         return clienteDTO;
     }
 
@@ -66,7 +61,7 @@ public class ClienteService {
             copyDtoToEntity(dto,cliente);
             cliente = repository.save(cliente);
             ClienteDTO clienteDTO  =  new ClienteDTO(cliente);
-            clienteDTOFila.atualizar(clienteDTO);
+
             return clienteDTO;
         }
         catch (EntityNotFoundException e){
@@ -91,5 +86,4 @@ public class ClienteService {
         pro.setMcc(dto.getMcc());
         pro.setEmail(dto.getEmail());
     }
-
 }
