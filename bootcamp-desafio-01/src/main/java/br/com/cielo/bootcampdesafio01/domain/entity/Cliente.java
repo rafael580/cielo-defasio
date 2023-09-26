@@ -3,6 +3,7 @@ package br.com.cielo.bootcampdesafio01.domain.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -11,7 +12,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_cliente")
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true,callSuper=false)
 public final class Cliente extends Usuario implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -33,8 +34,10 @@ public final class Cliente extends Usuario implements Serializable {
     public Cliente(){}
 
 
-    public Cliente(String cpf, String mcc, String nome, String email) {
+    public Cliente(Long id,String cpf, Integer mcc, String nome, String email) {
+
         super(mcc,cpf);
+        this.id = id;
         this.nome = nome;
         this.email = email;
     }
