@@ -1,13 +1,13 @@
-package br.com.cielo.bootcampdesafio01.api.service;
+package br.com.cielo.bootcampdesafio02.api.service;
 
 
-import br.com.cielo.bootcampdesafio01.api.service.exceptions.DataBaseException;
-import br.com.cielo.bootcampdesafio01.api.service.exceptions.EntityNotFound;
-import br.com.cielo.bootcampdesafio01.domain.entity.Empresa;
-import br.com.cielo.bootcampdesafio01.domain.repository.EmpresaRepository;
-import br.com.cielo.bootcampdesafio01.dto.EmpresaDTO;
-import br.com.cielo.bootcampdesafio01.dto.filters.empresa.EmpresaInsertDTO;
-import br.com.cielo.bootcampdesafio01.dto.filters.empresa.EmpresaUpdateDTO;
+import br.com.cielo.bootcampdesafio02.api.service.exceptions.DataBaseException;
+import br.com.cielo.bootcampdesafio02.api.service.exceptions.EntityNotFound;
+import br.com.cielo.bootcampdesafio02.domain.entity.Empresa;
+import br.com.cielo.bootcampdesafio02.domain.repository.EmpresaRepository;
+import br.com.cielo.bootcampdesafio02.dto.EmpresaDTO;
+import br.com.cielo.bootcampdesafio02.dto.filters.empresa.EmpresaInsertDTO;
+import br.com.cielo.bootcampdesafio02.dto.filters.empresa.EmpresaUpdateDTO;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
