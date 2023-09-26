@@ -1,0 +1,2 @@
+INSERT INTO tb_cliente (cpf,email,mcc,nome) VALUES ('23412444422','rafael@gmail.com','0003','rafael')
+INSERT INTO tb_empresa (cnpj,contrato_estabelecido,cpf,email_estabelecido,mcc,razao_social) VALUES ('23412444422111','contrato teste','23412444422','emprega@gmail.com','0003','rafael')
