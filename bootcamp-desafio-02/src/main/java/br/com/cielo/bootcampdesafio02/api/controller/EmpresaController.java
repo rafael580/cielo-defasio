@@ -2,6 +2,7 @@ package br.com.cielo.bootcampdesafio02.api.controller;
 
 
 import br.com.cielo.bootcampdesafio02.api.service.EmpresaService;
+import br.com.cielo.bootcampdesafio02.dto.ClienteDTO;
 import br.com.cielo.bootcampdesafio02.dto.EmpresaDTO;
 import br.com.cielo.bootcampdesafio02.dto.filters.empresa.EmpresaInsertDTO;
 import br.com.cielo.bootcampdesafio02.dto.filters.empresa.EmpresaUpdateDTO;
@@ -23,6 +24,16 @@ public class EmpresaController {
 
     @Autowired
     private EmpresaService service;
+
+    @GetMapping(value = "/primeiro-da-fila-empresa")
+    public ResponseEntity<EmpresaDTO> firstElementRow(){
+        if(service.filaEmpresas().isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        EmpresaDTO empresaDTO = service.filaEmpresas().remover();
+        return ResponseEntity.ok().body(empresaDTO);
+    }
+    
 
     @GetMapping
     public ResponseEntity<Page<EmpresaDTO>> findAll(Pageable pageAble ){

@@ -2,6 +2,7 @@ package br.com.cielo.bootcampdesafio02.api.service;
 
 import br.com.cielo.bootcampdesafio02.api.service.exceptions.DataBaseException;
 import br.com.cielo.bootcampdesafio02.api.service.exceptions.EntityNotFound;
+import br.com.cielo.bootcampdesafio02.data_structure.Fila;
 import br.com.cielo.bootcampdesafio02.domain.entity.Cliente;
 import br.com.cielo.bootcampdesafio02.domain.repository.ClienteRepository;
 
@@ -22,8 +23,18 @@ import java.util.Optional;
 @Service
 public class ClienteService {
 
+
+
+    Fila<ClienteDTO> clienteDTOFila = new Fila<>();
+
     @Autowired
     private ClienteRepository repository;
+
+
+    //FILA DE CLIENTES
+    public Fila<ClienteDTO> filaClientes(){
+        return this.clienteDTOFila;
+    }
 
     public Page<ClienteDTO> findAllPaged(Pageable pageAble){
         Page<Cliente> obj = repository.findAll( pageAble);
@@ -43,7 +54,9 @@ public class ClienteService {
         Cliente cliente = new Cliente();
         copyDtoToEntity(dto,cliente);
         cliente =  repository.save(cliente);
-        return  new ClienteDTO(cliente);
+        ClienteDTO clienteDTO =  new ClienteDTO(cliente);
+        clienteDTOFila.inserir(clienteDTO);
+        return clienteDTO;
     }
 
     @Transactional
@@ -52,7 +65,9 @@ public class ClienteService {
             Cliente cliente = repository.getOne(id);
             copyDtoToEntity(dto,cliente);
             cliente = repository.save(cliente);
-            return new ClienteDTO(cliente);
+            ClienteDTO clienteDTO  =  new ClienteDTO(cliente);
+            clienteDTOFila.atualizar(clienteDTO);
+            return clienteDTO;
         }
         catch (EntityNotFoundException e){
             throw new EntityNotFound("Id not found" + id);

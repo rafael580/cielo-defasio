@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Arrays;
 
 @RestController
 @RequestMapping("/clientes")
@@ -24,6 +25,15 @@ public class ClienteController {
     @Autowired
     private ClienteService service;
 
+
+    @GetMapping(value = "/primeiro-da-fila-cliente")
+    public ResponseEntity<ClienteDTO> firstElementRow(){
+        if(service.filaClientes().isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        ClienteDTO clienteDTO = service.filaClientes().remover();
+        return ResponseEntity.ok().body(clienteDTO);
+    }
     @GetMapping
     public ResponseEntity<Page<ClienteDTO>> findAll(Pageable pageAble ){
 
