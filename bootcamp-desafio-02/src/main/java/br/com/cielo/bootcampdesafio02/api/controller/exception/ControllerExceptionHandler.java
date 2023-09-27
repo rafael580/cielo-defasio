@@ -1,6 +1,5 @@
 package br.com.cielo.bootcampdesafio02.api.controller.exception;
 
-import br.com.cielo.bootcampdesafio02.api.service.exceptions.DataBaseException;
 import br.com.cielo.bootcampdesafio02.api.service.exceptions.EntityNotFound;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -22,18 +21,6 @@ public class ControllerExceptionHandler {
         err.setTimestamp(Instant.now());
         err.setStatus(status.value());
         err.setError("Resource not found");
-        err.setMessage(e.getMessage());
-        err.setPath(request.getRequestURI());
-        return ResponseEntity.status(status).body(err);
-    }
-
-    @ExceptionHandler(DataBaseException.class)
-    public ResponseEntity<StandardError> DataIntegrety(DataBaseException e , HttpServletRequest request){
-        HttpStatus status = HttpStatus.BAD_REQUEST;
-        StandardError err = new StandardError();
-        err.setTimestamp(Instant.now());
-        err.setStatus(status.value());
-        err.setError("Integrety Data");
         err.setMessage(e.getMessage());
         err.setPath(request.getRequestURI());
         return ResponseEntity.status(status).body(err);

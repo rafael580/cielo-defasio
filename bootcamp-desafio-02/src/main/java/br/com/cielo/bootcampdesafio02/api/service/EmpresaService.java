@@ -1,7 +1,6 @@
 package br.com.cielo.bootcampdesafio02.api.service;
 
 
-import br.com.cielo.bootcampdesafio02.api.service.exceptions.DataBaseException;
 import br.com.cielo.bootcampdesafio02.api.service.exceptions.EntityNotFound;
 import br.com.cielo.bootcampdesafio02.data_structure.Fila;
 import br.com.cielo.bootcampdesafio02.domain.entity.Empresa;
@@ -12,7 +11,6 @@ import br.com.cielo.bootcampdesafio02.dto.filters.empresa.EmpresaUpdateDTO;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -81,9 +79,6 @@ public class EmpresaService {
             repository.deleteById(id);
         }catch (EmptyResultDataAccessException e){
             throw new EntityNotFound("Id not found" + id);
-        }
-        catch (DataIntegrityViolationException e){
-            throw new DataBaseException("Integrety violation");
         }
     }
 
