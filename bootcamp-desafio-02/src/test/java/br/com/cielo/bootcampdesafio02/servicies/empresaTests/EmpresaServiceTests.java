@@ -74,6 +74,10 @@ public class EmpresaServiceTests {
 
     }
 
+    @Test
+    public void return_fila_empresaDTO(){
+        Assertions.assertNotNull(service.filaEmpresas());
+    }
 
 
 }
