@@ -68,8 +68,11 @@ public class ClienteServiceTests {
         Assertions.assertThrows(JpaObjectRetrievalFailureException.class,()->{
             service.update(144l,clienteUpdateDTO);
         });
-
     }
 
+    @Test
+    public void return_fila_clientDTO(){
+         Assertions.assertNotNull(service.filaClientes());
+    }
 
 }
