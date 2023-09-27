@@ -1,5 +1,6 @@
 package br.com.cielo.bootcampdesafio01.servicies.clienteTests;
 
+import br.com.cielo.bootcampdesafio01.api.controller.ClienteController;
 import br.com.cielo.bootcampdesafio01.api.service.ClienteService;
 import br.com.cielo.bootcampdesafio01.api.service.exceptions.EntityNotFound;
 import br.com.cielo.bootcampdesafio01.domain.entity.Cliente;
@@ -14,6 +15,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.data.domain.Page;
@@ -22,6 +24,10 @@ import org.springframework.data.domain.Pageable;
 import org.mockito.*;
 import java.util.List;
 import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
 public class ClienteServiceTest {
@@ -50,16 +56,16 @@ public class ClienteServiceTest {
         page = new PageImpl<>(List.of(cliente));
 
         //findAll
-        Mockito.when(repository.findAll((Pageable) ArgumentMatchers.any())).thenReturn(page);
+        when(repository.findAll((Pageable) ArgumentMatchers.any())).thenReturn(page);
         //save
-        Mockito.when(repository.save(ArgumentMatchers.any())).thenReturn(cliente);
+        when(repository.save(ArgumentMatchers.any())).thenReturn(cliente);
         //FindById
-        Mockito.when(repository.findById(existId)).thenReturn(Optional.of(cliente));
-        Mockito.when(repository.findById(nonExistId)).thenReturn(Optional.empty());
+        when(repository.findById(existId)).thenReturn(Optional.of(cliente));
+        when(repository.findById(nonExistId)).thenReturn(Optional.empty());
         Mockito.doThrow(EntityNotFound.class).when(repository).findById(nonExistId);
         //oneGet
-        Mockito.when(repository.getOne(existId)).thenReturn(cliente);
-        Mockito.when(repository.getOne(nonExistId)).thenThrow(EntityNotFound.class);
+        when(repository.getOne(existId)).thenReturn(cliente);
+        when(repository.getOne(nonExistId)).thenThrow(EntityNotFound.class);
 
     }
     @Test
@@ -89,4 +95,9 @@ public class ClienteServiceTest {
             service.update(nonExistId,clienteUpdateDTO);
         });
     }
+
+
+
+
+
 }

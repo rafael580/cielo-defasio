@@ -42,7 +42,7 @@ public class ClienteControllerIT {
         countTotalProducts = 25L;
     }
     @Test
-    public void updateShouldReturnNotFoundWhenIdDoesNotExist() throws Exception {
+    public void updateShouldReturnNotFoundWhenURIDoesNotExist() throws Exception {
 
         Cliente cliente = Factory.createCliente();
         ClienteDTO clienteDTO =  new ClienteDTO(cliente);

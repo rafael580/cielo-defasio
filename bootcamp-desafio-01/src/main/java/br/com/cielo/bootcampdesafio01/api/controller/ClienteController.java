@@ -24,6 +24,7 @@ public class ClienteController {
     @Autowired
     private ClienteService service;
 
+
     @GetMapping
     public ResponseEntity<Page<ClienteDTO>> findAll(Pageable pageAble ){
 
