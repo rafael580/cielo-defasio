@@ -24,16 +24,13 @@ import java.util.Optional;
 public class EmpresaService {
 
 
-    Fila<EmpresaDTO> empresaDTOFila = new Fila<>();
+
 
 
     @Autowired
     private EmpresaRepository repository;
 
-    //FILA DE EMPRESAS
-    public Fila<EmpresaDTO> filaEmpresas(){
-        return this.empresaDTOFila;
-    }
+
 
 
     @Transactional
@@ -57,7 +54,7 @@ public class EmpresaService {
         empresa =  repository.save(empresa);
 
         EmpresaDTO empresaDTO =  new EmpresaDTO(empresa);
-        empresaDTOFila.inserir(empresaDTO);
+
         return empresaDTO;
     }
 
@@ -68,7 +65,7 @@ public class EmpresaService {
             copyDtoToEntity(dto,empresa);
             empresa = repository.save(empresa);
             EmpresaDTO empresaDTO =  new EmpresaDTO(empresa);
-            empresaDTOFila.atualizar(empresaDTO);
+
             return empresaDTO;
         }
         catch (EntityNotFoundException e){

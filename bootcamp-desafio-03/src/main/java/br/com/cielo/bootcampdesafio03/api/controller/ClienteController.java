@@ -7,7 +7,7 @@ import br.com.cielo.bootcampdesafio03.dto.ClienteDTO;
 import br.com.cielo.bootcampdesafio03.dto.filters.cliente.ClienteInsertDTO;
 import br.com.cielo.bootcampdesafio03.dto.filters.cliente.ClienteUpdateDTO;
 
-import io.awspring.cloud.sqs.operations.SqsTemplate;
+
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,8 +29,6 @@ public class ClienteController {
     private ClienteService service;
 
 
-
-
     //     @GetMapping(value = "/primeiro-da-fila-cliente")
     //     public ResponseEntity<ClienteDTO> firstElementRow(){
     //        if(service.filaClientes().isEmpty()){
@@ -40,9 +38,7 @@ public class ClienteController {
     //     }
     @GetMapping
     public ResponseEntity<Page<ClienteDTO>> findAll(Pageable pageAble ){
-
         Page<ClienteDTO> list = service.findAllPaged(pageAble);
-
         return ResponseEntity.ok(list);
     }
     @GetMapping(value = "/{id}")
@@ -50,7 +46,6 @@ public class ClienteController {
         ClienteDTO obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
-
     @PostMapping
     public ResponseEntity<ClienteDTO> insert(@Valid @RequestBody ClienteInsertDTO clienteInsertDTO){
         ClienteDTO clienteDTO = service.insert(clienteInsertDTO);

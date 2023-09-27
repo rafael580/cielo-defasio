@@ -10,7 +10,7 @@ class BootcampDesafio02ApplicationTests {
 
 	@Test
 	public void testApplicationMain() {
-		// Este teste verifica se a classe principal pode ser executada sem lançar exceções.
+
 		assertDoesNotThrow(() -> BootcampDesafio02Application.main(new String[]{}));
 	}
 

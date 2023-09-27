@@ -25,15 +25,6 @@ public class EmpresaController {
     @Autowired
     private EmpresaService service;
 
-    @GetMapping(value = "/primeiro-da-fila-empresa")
-    public ResponseEntity<EmpresaDTO> firstElementRow(){
-        if(service.filaEmpresas().isEmpty()){
-            return ResponseEntity.noContent().build();
-        }
-        EmpresaDTO empresaDTO = service.filaEmpresas().remover();
-        return ResponseEntity.ok().body(empresaDTO);
-    }
-
 
     @GetMapping
     public ResponseEntity<Page<EmpresaDTO>> findAll(Pageable pageAble ){
