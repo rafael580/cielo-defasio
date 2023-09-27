@@ -9,6 +9,7 @@ import br.com.cielo.bootcampdesafio03.dto.ClienteDTO;
 import br.com.cielo.bootcampdesafio03.dto.filters.cliente.ClienteInsertDTO;
 import br.com.cielo.bootcampdesafio03.dto.filters.cliente.ClienteUpdateDTO;
 
+import io.awspring.cloud.sqs.operations.SqsTemplate;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,26 @@ import java.util.Optional;
 public class ClienteService {
 
 
-    private String queueUrl = "https://sqs.us-east-1.amazonaws.com/096022023871/fila_exemplo.fifo";
+    private final SqsTemplate sqsTemplate;
+    private static final String QUEUE = "bootcamp";
 
 
     @Autowired
     private ClienteRepository repository;
+
+    public ClienteService(SqsTemplate sqsTemplate) {
+        this.sqsTemplate = sqsTemplate;
+    }
+
+
+    public ClienteDTO devolverFila(){
+
+        //sqsTemplate.
+
+
+        return null;
+    }
+
 
 
     public Page<ClienteDTO> findAllPaged(Pageable pageAble){
@@ -50,6 +66,10 @@ public class ClienteService {
         copyDtoToEntity(dto,cliente);
         cliente =  repository.save(cliente);
         ClienteDTO clienteDTO =  new ClienteDTO(cliente);
+        sqsTemplate.send(to-> to.queue(QUEUE)
+                .payload(clienteDTO)
+        );
+
 
         return clienteDTO;
     }
@@ -61,6 +81,9 @@ public class ClienteService {
             copyDtoToEntity(dto,cliente);
             cliente = repository.save(cliente);
             ClienteDTO clienteDTO  =  new ClienteDTO(cliente);
+            sqsTemplate.send(to-> to.queue(QUEUE)
+                    .payload(clienteDTO)
+            );
 
             return clienteDTO;
         }

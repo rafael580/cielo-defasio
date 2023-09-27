@@ -23,25 +23,21 @@ import java.net.URI;
 public class ClienteController {
 
 
-    private final SqsTemplate sqsTemplate;
-    private static final String QUEUE = "bootcamp";
 
 
     @Autowired
     private ClienteService service;
 
-    public ClienteController(SqsTemplate sqsTemplate) {
-        this.sqsTemplate = sqsTemplate;
-    }
+
 
 
     //     @GetMapping(value = "/primeiro-da-fila-cliente")
     //     public ResponseEntity<ClienteDTO> firstElementRow(){
     //        if(service.filaClientes().isEmpty()){
-   //           return ResponseEntity.noContent().build();
-   //           }
-  //      return ResponseEntity.ok().body(clienteDTO);
-   //     }
+    //           return ResponseEntity.noContent().build();
+    //           }
+    //      return ResponseEntity.ok().body(clienteDTO);
+    //     }
     @GetMapping
     public ResponseEntity<Page<ClienteDTO>> findAll(Pageable pageAble ){
 
@@ -60,12 +56,6 @@ public class ClienteController {
         ClienteDTO clienteDTO = service.insert(clienteInsertDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(clienteDTO.getId()).toUri();
-
-        sqsTemplate.send(to-> to.queue(QUEUE)
-                .payload(clienteDTO)
-        );
-
-
         return  ResponseEntity.created(uri).body(clienteDTO);
     }
     @PutMapping(value = "/{id}")
@@ -78,6 +68,4 @@ public class ClienteController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
-
-
 }
