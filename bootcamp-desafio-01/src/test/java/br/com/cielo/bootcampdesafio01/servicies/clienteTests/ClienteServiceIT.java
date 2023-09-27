@@ -1,4 +1,4 @@
-package br.com.cielo.bootcampdesafio01.servicies;
+package br.com.cielo.bootcampdesafio01.servicies.clienteTests;
 
 import br.com.cielo.bootcampdesafio01.api.service.ClienteService;
 import br.com.cielo.bootcampdesafio01.domain.repository.ClienteRepository;

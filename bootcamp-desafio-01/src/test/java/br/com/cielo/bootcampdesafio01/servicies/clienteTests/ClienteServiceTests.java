@@ -1,4 +1,4 @@
-package br.com.cielo.bootcampdesafio01.servicies;
+package br.com.cielo.bootcampdesafio01.servicies.clienteTests;
 
 import br.com.cielo.bootcampdesafio01.api.service.ClienteService;
 import br.com.cielo.bootcampdesafio01.api.service.exceptions.EntityNotFound;
@@ -7,6 +7,7 @@ import br.com.cielo.bootcampdesafio01.domain.repository.ClienteRepository;
 import br.com.cielo.bootcampdesafio01.dto.ClienteDTO;
 import br.com.cielo.bootcampdesafio01.dto.filters.cliente.ClienteInsertDTO;
 import br.com.cielo.bootcampdesafio01.dto.filters.cliente.ClienteUpdateDTO;
+import br.com.cielo.bootcampdesafio01.dto.filters.empresa.EmpresaUpdateDTO;
 import br.com.cielo.bootcampdesafio01.tests.Factory;
 import jakarta.transaction.Transactional;
 
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 
 import java.util.List;
 
@@ -58,4 +60,16 @@ public class ClienteServiceTests {
         Page<ClienteDTO> clientePage = service.findAllPaged(page.getPageable());
         Assertions.assertNotNull(clientePage);
     }
+
+    @Test
+    public void ClienteService_update_cliente_id_not_exist(){
+        ClienteUpdateDTO clienteUpdateDTO = new  ClienteUpdateDTO();
+
+        Assertions.assertThrows(JpaObjectRetrievalFailureException.class,()->{
+            service.update(144l,clienteUpdateDTO);
+        });
+
+    }
+
+
 }
