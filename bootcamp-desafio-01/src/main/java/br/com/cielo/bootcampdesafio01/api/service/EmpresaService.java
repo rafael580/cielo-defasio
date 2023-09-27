@@ -1,7 +1,6 @@
 package br.com.cielo.bootcampdesafio01.api.service;
 
 
-import br.com.cielo.bootcampdesafio01.api.service.exceptions.DataBaseException;
 import br.com.cielo.bootcampdesafio01.api.service.exceptions.EntityNotFound;
 import br.com.cielo.bootcampdesafio01.domain.entity.Empresa;
 import br.com.cielo.bootcampdesafio01.domain.repository.EmpresaRepository;
@@ -11,14 +10,11 @@ import br.com.cielo.bootcampdesafio01.dto.filters.empresa.EmpresaUpdateDTO;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -68,9 +64,7 @@ public class EmpresaService {
         }catch (EmptyResultDataAccessException e){
             throw new EntityNotFound("Id not found" + id);
         }
-        catch (DataIntegrityViolationException e){
-            throw new DataBaseException("Integrety violation");
-        }
+
     }
 
     private void copyDtoToEntity(EmpresaDTO dto, Empresa pro){

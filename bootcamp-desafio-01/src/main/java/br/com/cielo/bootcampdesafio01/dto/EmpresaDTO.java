@@ -39,15 +39,7 @@ public class EmpresaDTO implements Serializable {
 
     public EmpresaDTO(){}
 
-    public EmpresaDTO(Long id, String cnpj, String razaoSocial, String mcc, String cpf, String contratoEstabelecido, String emailEstabelecido) {
-        this.id = id;
-        this.cnpj = cnpj;
-        this.razaoSocial = razaoSocial;
-        this.mcc = mcc;
-        this.cpf = cpf;
-        this.contratoEstabelecido = contratoEstabelecido;
-        this.emailEstabelecido = emailEstabelecido;
-    }
+
 
     public EmpresaDTO(Empresa empresa) {
         this.id = empresa.getId();

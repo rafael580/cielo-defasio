@@ -9,4 +9,7 @@ public class EmpresaUpdateDTO extends EmpresaDTO {
 
     private static final Long serialVersionUID = 1l;
 
+
+
+
 }
