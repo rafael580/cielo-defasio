@@ -1,9 +1,9 @@
-package br.com.cielo.bootcampdesafio01.controllers.exceptions;
+package br.com.cielo.bootcampdesafio02.controllers.exceptions;
 
-import br.com.cielo.bootcampdesafio01.api.controller.exception.ControllerExceptionHandler;
-import br.com.cielo.bootcampdesafio01.api.controller.exception.StandardError;
-import br.com.cielo.bootcampdesafio01.api.controller.exception.ValidationError;
-import br.com.cielo.bootcampdesafio01.api.service.exceptions.EntityNotFound;
+import br.com.cielo.bootcampdesafio02.api.controller.exception.ControllerExceptionHandler;
+import br.com.cielo.bootcampdesafio02.api.controller.exception.StandardError;
+import br.com.cielo.bootcampdesafio02.api.controller.exception.ValidationError;
+import br.com.cielo.bootcampdesafio02.api.service.exceptions.EntityNotFound;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

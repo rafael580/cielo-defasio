@@ -1,6 +1,7 @@
+package br.com.cielo.bootcampdesafio02.tests;
+
 import br.com.cielo.bootcampdesafio02.domain.entity.Cliente;
 import br.com.cielo.bootcampdesafio02.domain.entity.Empresa;
-
 
 public class Factory {
 
