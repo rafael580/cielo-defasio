@@ -22,7 +22,6 @@ public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert
     public void initialize(ClienteInsertValid constraintAnnotation) {
 
     }
-
     @Override
     public boolean isValid(ClienteInsertDTO clienteInsertDTO, ConstraintValidatorContext constraintValidatorContext) {
         List<FieldMessage> list = new ArrayList<>();

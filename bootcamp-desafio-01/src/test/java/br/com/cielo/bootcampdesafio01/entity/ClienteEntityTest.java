@@ -4,7 +4,8 @@ import br.com.cielo.bootcampdesafio01.domain.entity.Cliente;
 import br.com.cielo.bootcampdesafio01.tests.Factory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 public class ClienteEntityTest {
     private String coringa;
 
@@ -122,4 +123,38 @@ public class ClienteEntityTest {
         cliente.setCpf(null);
         Assertions.assertEquals(coringa,cliente.getCpf());
     }
+
+    @Test
+    public void testEqualsAndHashCode() {
+        // Crie duas instâncias de Cliente com os mesmos valores
+        Cliente cliente1 = new Cliente(1L, "1234567890", "MCC1", "Alice", "alice@example.com");
+        Cliente cliente2 = new Cliente(1L, "1234567890", "MCC1", "Alice", "alice@example.com");
+
+        // Crie uma terceira instância com valores diferentes
+        Cliente cliente3 = new Cliente(2L, "9876543210", "MCC2", "Bob", "bob@example.com");
+
+        // Teste de igualdade
+        assertThat(cliente1).isEqualTo(cliente1);
+
+
+        // Teste de hashCode
+        assertThat(cliente1.hashCode()).isEqualTo(cliente1.hashCode());
+
+    }
+    @Test
+    public void testCreateUpdateAt() {
+
+        Cliente cliente = new Cliente(1L, "1234567890", "MCC1", "Alice", "alice@example.com");
+
+        assertThat(cliente.getCreateUpdateAt()).isNull();
+
+        cliente.prePersist();
+        assertThat(cliente.getCreateAt()).isNotNull();
+
+
+        cliente.preUpdate();
+        assertThat(cliente.getCreateUpdateAt()).isNotNull();
+    }
+
+
 }

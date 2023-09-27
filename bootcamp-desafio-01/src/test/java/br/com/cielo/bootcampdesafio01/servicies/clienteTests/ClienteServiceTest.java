@@ -22,10 +22,18 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.mockito.*;
+import org.w3c.dom.ls.LSResourceResolver;
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXException;
+
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.validation.Validator;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -36,14 +44,12 @@ public class ClienteServiceTest {
     private ClienteService service;
     @Mock
     private ClienteRepository repository;
-
     private Long existId;
     private Long nonExistId;
     private Long dependentId;
     private Cliente cliente;
     private PageImpl<Cliente> page;
     private ClienteDTO clienteDTO;
-
     private ClienteInsertDTO clienteInsertDTO;
     private ClienteUpdateDTO clienteUpdateDTO;
 
@@ -95,9 +101,4 @@ public class ClienteServiceTest {
             service.update(nonExistId,clienteUpdateDTO);
         });
     }
-
-
-
-
-
 }
