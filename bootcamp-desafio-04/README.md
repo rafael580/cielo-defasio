@@ -1,19 +1,43 @@
-# Fila de Atendimento com AWS SQS
 
-Este projeto descreve a implementação de uma fila de atendimento compartilhada entre clientes e empresas utilizando o Amazon Simple Queue Service (SQS) da AWS.
+# README - Mudança para UUIDs para Mitigar Vulnerabilidade IDOR
 
-## Motivação
-### Problema de Escalabilidade
-Identificamos a necessidade de uma solução robusta para lidar com o crescimento da fila de atendimento, que agora inclui tanto clientes quanto empresas.
+Este documento descreve a mudança que estamos fazendo em nosso sistema de
+gerenciamento de IDs. Estamos adotando UUIDs (Universal Unique Identifiers) em vez
+de IDs autoincrementados long. Essa mudança visa mitigar a vulnerabilidade conhecida como IDOR (Insecure Direct Object References).
 
-### Perda de Dados
-A aplicação original armazenava dados de clientes e empresas em memória, resultando na perda de dados ao reiniciar a aplicação.
+## O que é o IDOR?
 
-## Vantagens do Amazon SQS
-- **Elasticidade:** O SQS é altamente escalável, adaptando-se automaticamente às demandas sem necessidade de provisionamento manual.
-- **Persistência de Dados:** Mensagens na fila SQS são armazenadas de forma durável e segura.
-- **Alta Disponibilidade:** O SQS é gerenciado pela AWS e oferece alta disponibilidade.
-- **Integração com a AWS:** Permite integração com outras soluções AWS, como AWS Lambda, Amazon S3 e Amazon EC2.
+A vulnerabilidade IDOR (Insecure Direct Object References) ocorre quando um aplicativo web permite
+que atacantes acessem objetos ou recursos diretamente, geralmente por meio de IDs previsíveis ou
+incrementados sequencialmente. Isso pode levar a sérios riscos de segurança, pois os atacantes
+podem acessar informações confidenciais ou executar ações não autorizadas.
 
-## Conclusão
-A utilização do Amazon SQS para uma fila de atendimento compartilhada entre clientes e empresas resolve os problemas de escalabilidade, persistência de dados e alta disponibilidade. Esta solução proporciona uma base sólida para atender a requisitos de negócios futuros e integrar-se a outras soluções da AWS, quando necessário.
+## Por que estamos fazendo essa mudança?
+
+Estamos adotando UUIDs como identificadores exclusivos em nossos sistemas para evitar a vulnerabilidade
+IDOR. Os UUIDs são valores de 128 bits que são únicos em escala global e, portanto, não podem ser previstos ou adivinhados por atacantes.
+
+Ao fazer essa mudança, estamos reforçando a segurança dos nossos sistemas, tornando mais difícil para
+potenciais invasores explorarem IDs previsíveis ou sequenciais para acessar recursos ou informações não autorizados.
+
+## Benefícios da mudança para UUIDs:
+
+- **Maior Segurança**: Os UUIDs são difíceis de prever, tornando nossos sistemas mais seguros contra
+  vulnerabilidades IDOR.
+
+- **Privacidade e Confidencialidade**: A mudança para UUIDs ajuda a proteger informações confidenciais,
+  garantindo que apenas os usuários autorizados possam acessá-las.
+
+- **Menos Suscetibilidade a Ataques**: Ao eliminar a previsibilidade dos IDs, reduzimos a exposição
+  a ataques que exploram IDs previsíveis ou sequenciais.
+
+## Como isso afeta você:
+
+Se você é um usuário de nossos sistemas, essa mudança não deve afetar significativamente a sua experiência.
+Você ainda poderá interagir com os recursos e informações da mesma maneira, mas com um nível aprimorado de segurança.
+
+## Recursos para Desenvolvedores:
+
+Se você é um desenvolvedor ou mantenedor de nossos sistemas, é importante atualizar seu código para lidar
+com os UUIDs em vez dos IDs long autoincrementados. Certifique-se de que todos os pontos de acesso estejam
+alinhados com essa mudança e que a lógica de autenticação e autorização seja devidamente ajustada.
