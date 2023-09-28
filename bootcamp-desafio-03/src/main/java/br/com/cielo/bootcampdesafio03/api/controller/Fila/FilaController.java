@@ -1,7 +1,7 @@
 package br.com.cielo.bootcampdesafio03.api.controller.Fila;
 
 import io.awspring.cloud.sqs.annotation.SqsListener;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/fila")
 public class FilaController {
 
-
     public static final String QUEUE = "bootcamp";
 
     @SqsListener(QUEUE)
@@ -20,5 +19,6 @@ public class FilaController {
     public ResponseEntity<Object> firstElementRow(@Payload Object object){
         return ResponseEntity.ok().body(object);
     }
+
 
 }

@@ -2,6 +2,8 @@ package br.com.cielo.bootcampdesafio03.config;
 
 
 
+import br.com.cielo.bootcampdesafio03.domain.entity.Cliente;
+import br.com.cielo.bootcampdesafio03.dto.ClienteDTO;
 import io.awspring.cloud.sqs.listener.SqsMessageListenerContainer;
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import org.slf4j.Logger;
@@ -22,6 +24,9 @@ public class SqsManualContainerInstantiationSample {
 
     @Bean
     public ApplicationRunner sendMessageToQueueManualContainerInstantiation(SqsTemplate sqsTemplate) {
+
+
+
         LOGGER.info("Sending message");
         return args -> sqsTemplate.send(to -> to.queue(NEW_USER_QUEUE)
                 .payload(new User(UUID.randomUUID(), "John"))
@@ -41,7 +46,7 @@ public class SqsManualContainerInstantiationSample {
                 .sqsAsyncClient(sqsAsyncClient)
                 .queueNames(NEW_USER_QUEUE)
                 .messageListener((message) -> {
-                    LOGGER.info("Received message {}", message);
+                    LOGGER.info("Received message {}", message.getPayload());
                 })
                 .build();
     }
