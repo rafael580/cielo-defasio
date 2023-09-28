@@ -17,7 +17,6 @@ public class FilaService {
     @SqsListener(QUEUE)
     public void listen(@Payload Object message) {
         LOGGER.info("Received message {} {}", message);
-
     }
 
 }
