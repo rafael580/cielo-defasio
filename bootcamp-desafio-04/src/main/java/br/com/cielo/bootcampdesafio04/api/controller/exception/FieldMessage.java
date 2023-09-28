@@ -1,4 +1,4 @@
-package br.com.cielo.bootcampdesafio03.api.controller.exception;
+package br.com.cielo.bootcampdesafio04.api.controller.exception;
 
 import java.io.Serializable;
 

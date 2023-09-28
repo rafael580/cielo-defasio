@@ -1,9 +1,9 @@
-package br.com.cielo.bootcampdesafio03.api.service.validation.empresa;
+package br.com.cielo.bootcampdesafio04.api.service.validation.empresa;
 
-import br.com.cielo.bootcampdesafio03.api.controller.exception.FieldMessage;
-import br.com.cielo.bootcampdesafio03.domain.entity.Empresa;
-import br.com.cielo.bootcampdesafio03.domain.repository.EmpresaRepository;
-import br.com.cielo.bootcampdesafio03.dto.filters.empresa.EmpresaInsertDTO;
+import br.com.cielo.bootcampdesafio04.api.controller.exception.FieldMessage;
+import br.com.cielo.bootcampdesafio04.domain.entity.Empresa;
+import br.com.cielo.bootcampdesafio04.domain.repository.EmpresaRepository;
+import br.com.cielo.bootcampdesafio04.dto.filters.empresa.EmpresaInsertDTO;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +30,14 @@ public class EmpresaInsertValidator implements ConstraintValidator<EmpresaInsert
         Empresa empresa = repository.findByCnpj(empresaInsertDTO.getCnpj());
         if(empresa!=null){
             list.add(new FieldMessage("cnpj","cnpj existente"));
+        }
+        empresa = repository.findByEmailEstabelecido(empresaInsertDTO.getEmailEstabelecido());
+        if(empresa!=null){
+            list.add(new FieldMessage("emailEstabelecido","email existente"));
+        }
+        empresa = repository.findByCpf(empresaInsertDTO.getCpf());
+        if(empresa!=null){
+            list.add(new FieldMessage("cpf","cpf existente"));
         }
         for (FieldMessage e : list) {
             constraintValidatorContext.disableDefaultConstraintViolation();

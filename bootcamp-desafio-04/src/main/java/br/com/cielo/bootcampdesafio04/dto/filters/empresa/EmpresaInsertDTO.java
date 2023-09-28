@@ -1,8 +1,8 @@
-package br.com.cielo.bootcampdesafio03.dto.filters.empresa;
+package br.com.cielo.bootcampdesafio04.dto.filters.empresa;
 
 
-import br.com.cielo.bootcampdesafio03.api.service.validation.empresa.EmpresaInsertValid;
-import br.com.cielo.bootcampdesafio03.dto.EmpresaDTO;
+import br.com.cielo.bootcampdesafio04.api.service.validation.empresa.EmpresaInsertValid;
+import br.com.cielo.bootcampdesafio04.dto.EmpresaDTO;
 
 @EmpresaInsertValid
 public class EmpresaInsertDTO extends EmpresaDTO {

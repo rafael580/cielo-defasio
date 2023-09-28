@@ -1,6 +1,6 @@
-package br.com.cielo.bootcampdesafio03.domain.repository;
+package br.com.cielo.bootcampdesafio04.domain.repository;
 
-import br.com.cielo.bootcampdesafio03.domain.entity.Cliente;
+import br.com.cielo.bootcampdesafio04.domain.entity.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,5 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface ClienteRepository  extends JpaRepository<Cliente,Long> {
 
     Cliente findByCpf(String cpf);
+
+    Cliente findByEmail(String email);
 
 }

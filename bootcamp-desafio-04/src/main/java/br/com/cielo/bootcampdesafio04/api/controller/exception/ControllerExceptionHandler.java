@@ -1,7 +1,7 @@
-package br.com.cielo.bootcampdesafio03.api.controller.exception;
+package br.com.cielo.bootcampdesafio04.api.controller.exception;
 
-import br.com.cielo.bootcampdesafio03.api.service.exceptions.DataBaseException;
-import br.com.cielo.bootcampdesafio03.api.service.exceptions.EntityNotFound;
+import br.com.cielo.bootcampdesafio04.api.service.exceptions.DataBaseException;
+import br.com.cielo.bootcampdesafio04.api.service.exceptions.EntityNotFound;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

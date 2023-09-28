@@ -1,9 +1,9 @@
-package br.com.cielo.bootcampdesafio03.api.service.validation.empresa;
+package br.com.cielo.bootcampdesafio04.api.service.validation.empresa;
 
-import br.com.cielo.bootcampdesafio03.api.controller.exception.FieldMessage;
-import br.com.cielo.bootcampdesafio03.domain.entity.Empresa;
-import br.com.cielo.bootcampdesafio03.domain.repository.EmpresaRepository;
-import br.com.cielo.bootcampdesafio03.dto.filters.empresa.EmpresaUpdateDTO;
+import br.com.cielo.bootcampdesafio04.api.controller.exception.FieldMessage;
+import br.com.cielo.bootcampdesafio04.domain.entity.Empresa;
+import br.com.cielo.bootcampdesafio04.domain.repository.EmpresaRepository;
+import br.com.cielo.bootcampdesafio04.dto.filters.empresa.EmpresaUpdateDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -41,6 +41,16 @@ public class EmpresaUpdateValidator implements ConstraintValidator<EmpresaUpdate
             list.add(new FieldMessage("cnpj","cnpj existente"));
         }
 
+        empresa = repository.findByEmailEstabelecido(empresaUpdateValidator.getEmailEstabelecido());
+
+        if(empresa!=null && empresaId != empresa.getId()){
+            list.add(new FieldMessage("emailEstabelecido","email existente"));
+        }
+        empresa = repository.findByCpf(empresaUpdateValidator.getCpf());
+
+        if(empresa!=null && empresaId != empresa.getId()){
+            list.add(new FieldMessage("cpf","cpf existente"));
+        }
 
         for (FieldMessage e : list) {
             constraintValidatorContext.disableDefaultConstraintViolation();

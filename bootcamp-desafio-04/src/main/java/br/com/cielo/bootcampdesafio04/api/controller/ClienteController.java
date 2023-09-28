@@ -1,21 +1,20 @@
-package br.com.cielo.bootcampdesafio03.api.controller;
+package br.com.cielo.bootcampdesafio04.api.controller;
 
 
-import br.com.cielo.bootcampdesafio03.api.service.ClienteService;
-import br.com.cielo.bootcampdesafio03.dto.ClienteDTO;
+import br.com.cielo.bootcampdesafio04.api.service.ClienteService;
+import br.com.cielo.bootcampdesafio04.dto.ClienteDTO;
 
-import br.com.cielo.bootcampdesafio03.dto.filters.cliente.ClienteInsertDTO;
-import br.com.cielo.bootcampdesafio03.dto.filters.cliente.ClienteUpdateDTO;
+import br.com.cielo.bootcampdesafio04.dto.filters.cliente.ClienteInsertDTO;
+import br.com.cielo.bootcampdesafio04.dto.filters.cliente.ClienteUpdateDTO;
 
 
-import io.awspring.cloud.sqs.annotation.SqsListener;
+
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 

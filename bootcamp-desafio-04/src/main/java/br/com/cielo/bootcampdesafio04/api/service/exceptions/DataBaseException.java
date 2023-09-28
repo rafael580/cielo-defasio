@@ -1,4 +1,4 @@
-package br.com.cielo.bootcampdesafio03.api.service.exceptions;
+package br.com.cielo.bootcampdesafio04.api.service.exceptions;
 
 public class DataBaseException extends RuntimeException{
 

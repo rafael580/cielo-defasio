@@ -1,6 +1,6 @@
-package br.com.cielo.bootcampdesafio03.dto;
+package br.com.cielo.bootcampdesafio04.dto;
 
-import br.com.cielo.bootcampdesafio03.domain.entity.Cliente;
+import br.com.cielo.bootcampdesafio04.domain.entity.Cliente;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;

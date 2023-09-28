@@ -1,9 +1,9 @@
-package br.com.cielo.bootcampdesafio03.api.service.validation.cliente;
+package br.com.cielo.bootcampdesafio04.api.service.validation.cliente;
 
-import br.com.cielo.bootcampdesafio03.api.controller.exception.FieldMessage;
-import br.com.cielo.bootcampdesafio03.domain.entity.Cliente;
-import br.com.cielo.bootcampdesafio03.domain.repository.ClienteRepository;
-import br.com.cielo.bootcampdesafio03.dto.filters.cliente.ClienteInsertDTO;
+import br.com.cielo.bootcampdesafio04.api.controller.exception.FieldMessage;
+import br.com.cielo.bootcampdesafio04.domain.entity.Cliente;
+import br.com.cielo.bootcampdesafio04.domain.repository.ClienteRepository;
+import br.com.cielo.bootcampdesafio04.dto.filters.cliente.ClienteInsertDTO;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +29,10 @@ public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert
         Cliente cliente = repository.findByCpf(clienteInsertDTO.getCpf());
         if(cliente!=null){
             list.add(new FieldMessage("cpf","cpf existente"));
+        }
+        cliente = repository.findByEmail(clienteInsertDTO.getEmail());
+        if(cliente!=null){
+            list.add(new FieldMessage("email","email existente"));
         }
         for (FieldMessage e : list) {
             constraintValidatorContext.disableDefaultConstraintViolation();

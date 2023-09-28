@@ -1,9 +1,7 @@
-package br.com.cielo.bootcampdesafio03.config;
+package br.com.cielo.bootcampdesafio04.config;
 
 
 
-import br.com.cielo.bootcampdesafio03.domain.entity.Cliente;
-import br.com.cielo.bootcampdesafio03.dto.ClienteDTO;
 import io.awspring.cloud.sqs.listener.SqsMessageListenerContainer;
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import org.slf4j.Logger;

@@ -1,10 +1,10 @@
-package br.com.cielo.bootcampdesafio03.api.controller;
+package br.com.cielo.bootcampdesafio04.api.controller;
 
 
-import br.com.cielo.bootcampdesafio03.api.service.EmpresaService;
-import br.com.cielo.bootcampdesafio03.dto.EmpresaDTO;
-import br.com.cielo.bootcampdesafio03.dto.filters.empresa.EmpresaInsertDTO;
-import br.com.cielo.bootcampdesafio03.dto.filters.empresa.EmpresaUpdateDTO;
+import br.com.cielo.bootcampdesafio04.api.service.EmpresaService;
+import br.com.cielo.bootcampdesafio04.dto.EmpresaDTO;
+import br.com.cielo.bootcampdesafio04.dto.filters.empresa.EmpresaInsertDTO;
+import br.com.cielo.bootcampdesafio04.dto.filters.empresa.EmpresaUpdateDTO;
 
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import jakarta.validation.Valid;

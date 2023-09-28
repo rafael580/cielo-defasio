@@ -1,4 +1,4 @@
-package br.com.cielo.bootcampdesafio03.domain.entity;
+package br.com.cielo.bootcampdesafio04.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

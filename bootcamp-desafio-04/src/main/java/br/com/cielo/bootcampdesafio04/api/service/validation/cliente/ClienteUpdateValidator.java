@@ -1,9 +1,9 @@
-package br.com.cielo.bootcampdesafio03.api.service.validation.cliente;
+package br.com.cielo.bootcampdesafio04.api.service.validation.cliente;
 
-import br.com.cielo.bootcampdesafio03.api.controller.exception.FieldMessage;
-import br.com.cielo.bootcampdesafio03.domain.entity.Cliente;
-import br.com.cielo.bootcampdesafio03.domain.repository.ClienteRepository;
-import br.com.cielo.bootcampdesafio03.dto.filters.cliente.ClienteUpdateDTO;
+import br.com.cielo.bootcampdesafio04.api.controller.exception.FieldMessage;
+import br.com.cielo.bootcampdesafio04.domain.entity.Cliente;
+import br.com.cielo.bootcampdesafio04.domain.repository.ClienteRepository;
+import br.com.cielo.bootcampdesafio04.dto.filters.cliente.ClienteUpdateDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintValidator;
@@ -39,8 +39,10 @@ public class ClienteUpdateValidator  implements ConstraintValidator<ClienteUpdat
         if(cliente!=null && clienteId != cliente.getId()){
             list.add(new FieldMessage("cpf","cpf existente"));
         }
-
-
+        cliente = repository.findByEmail(clienteUpdateDTO.getEmail());
+        if(cliente!=null && clienteId != cliente.getId()){
+            list.add(new FieldMessage("email","email existente"));
+        }
         for (FieldMessage e : list) {
             constraintValidatorContext.disableDefaultConstraintViolation();
             constraintValidatorContext.buildConstraintViolationWithTemplate(e.getMessage()).addPropertyNode(e.getFieldName())

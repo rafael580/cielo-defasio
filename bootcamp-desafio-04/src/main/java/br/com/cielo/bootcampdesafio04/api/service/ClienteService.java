@@ -1,13 +1,13 @@
-package br.com.cielo.bootcampdesafio03.api.service;
+package br.com.cielo.bootcampdesafio04.api.service;
 
-import br.com.cielo.bootcampdesafio03.api.service.exceptions.DataBaseException;
-import br.com.cielo.bootcampdesafio03.api.service.exceptions.EntityNotFound;
-import br.com.cielo.bootcampdesafio03.domain.entity.Cliente;
-import br.com.cielo.bootcampdesafio03.domain.repository.ClienteRepository;
+import br.com.cielo.bootcampdesafio04.api.service.exceptions.DataBaseException;
+import br.com.cielo.bootcampdesafio04.api.service.exceptions.EntityNotFound;
+import br.com.cielo.bootcampdesafio04.domain.entity.Cliente;
+import br.com.cielo.bootcampdesafio04.domain.repository.ClienteRepository;
 
-import br.com.cielo.bootcampdesafio03.dto.ClienteDTO;
-import br.com.cielo.bootcampdesafio03.dto.filters.cliente.ClienteInsertDTO;
-import br.com.cielo.bootcampdesafio03.dto.filters.cliente.ClienteUpdateDTO;
+import br.com.cielo.bootcampdesafio04.dto.ClienteDTO;
+import br.com.cielo.bootcampdesafio04.dto.filters.cliente.ClienteInsertDTO;
+import br.com.cielo.bootcampdesafio04.dto.filters.cliente.ClienteUpdateDTO;
 
 
 import jakarta.persistence.EntityNotFoundException;
