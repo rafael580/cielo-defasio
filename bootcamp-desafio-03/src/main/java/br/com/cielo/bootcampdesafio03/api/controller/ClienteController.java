@@ -38,11 +38,7 @@ public class ClienteController {
     public ClienteController(SqsTemplate sqsTemplate) {
         this.sqsTemplate = sqsTemplate;
     }
-         @SqsListener(QUEUE)
-         @GetMapping(value = "/primeiro-da-fila-cliente")
-         public ResponseEntity<Object> firstElementRow(@Payload Object message){
-        return ResponseEntity.ok().body(message);
-        }
+
 
     @GetMapping
     public ResponseEntity<Page<ClienteDTO>> findAll(Pageable pageAble ){
@@ -60,13 +56,14 @@ public class ClienteController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(clienteDTO.getId()).toUri();
 
-        sqsTemplate.send(QUEUE,clienteDTO.toString());
+        sqsTemplate.send(to-> to.queue(QUEUE).payload(clienteDTO));
 
         return  ResponseEntity.created(uri).body(clienteDTO);
     }
     @PutMapping(value = "/{id}")
     public ResponseEntity<ClienteDTO>  update( @PathVariable long id ,@Valid @RequestBody ClienteUpdateDTO clienteUpdateDTO){
         ClienteDTO clienteDTO = service.update(id,clienteUpdateDTO);
+        sqsTemplate.send(to-> to.queue(QUEUE).payload(clienteDTO));
         return  ResponseEntity.ok().body(clienteDTO);
     }
     @DeleteMapping(value = "/{id}")

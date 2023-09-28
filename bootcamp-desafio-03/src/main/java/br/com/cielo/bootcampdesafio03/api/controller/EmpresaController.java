@@ -2,11 +2,11 @@ package br.com.cielo.bootcampdesafio03.api.controller;
 
 
 import br.com.cielo.bootcampdesafio03.api.service.EmpresaService;
-import br.com.cielo.bootcampdesafio03.dto.ClienteDTO;
 import br.com.cielo.bootcampdesafio03.dto.EmpresaDTO;
 import br.com.cielo.bootcampdesafio03.dto.filters.empresa.EmpresaInsertDTO;
 import br.com.cielo.bootcampdesafio03.dto.filters.empresa.EmpresaUpdateDTO;
 
+import io.awspring.cloud.sqs.operations.SqsTemplate;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,9 +21,16 @@ import java.net.URI;
 @RequestMapping("/empresas")
 public class EmpresaController {
 
+    private final SqsTemplate sqsTemplate;
 
+
+    public static final String QUEUE = "bootcamp";
     @Autowired
     private EmpresaService service;
+
+    public EmpresaController(SqsTemplate sqsTemplate) {
+        this.sqsTemplate = sqsTemplate;
+    }
 
 
     @GetMapping
@@ -43,11 +50,16 @@ public class EmpresaController {
         EmpresaDTO empresaDTO = service.insert(empresaInsertDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(empresaDTO.getId()).toUri();
+
+        sqsTemplate.send(to-> to.queue(QUEUE).payload(empresaDTO));
+
+
         return  ResponseEntity.created(uri).body(empresaDTO);
     }
     @PutMapping(value = "/{id}")
     public ResponseEntity<EmpresaDTO>  update( @PathVariable long id ,@Valid @RequestBody EmpresaUpdateDTO empresaUpdateDTO){
         EmpresaDTO empresaDTO = service.update(id,empresaUpdateDTO);
+        sqsTemplate.send(to-> to.queue(QUEUE).payload(empresaDTO));
         return  ResponseEntity.ok().body(empresaDTO);
     }
     @DeleteMapping(value = "/{id}")
