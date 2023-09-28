@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/fila")
 public class FilaController {
 
-    public static final String QUEUE = "bootcamp";
+    public static final String QUEUE = "bootcamp-cielo.fifo";
 
     @SqsListener(QUEUE)
     @GetMapping

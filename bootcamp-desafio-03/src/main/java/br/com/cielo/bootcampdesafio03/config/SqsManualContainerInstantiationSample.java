@@ -18,7 +18,7 @@ import java.util.UUID;
 @Configuration
 public class SqsManualContainerInstantiationSample {
 
-    public static final String NEW_USER_QUEUE = "bootcamp";
+    public static final String NEW_USER_QUEUE = "bootcamp-cielo.fifo";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SqsManualContainerInstantiationSample.class);
 

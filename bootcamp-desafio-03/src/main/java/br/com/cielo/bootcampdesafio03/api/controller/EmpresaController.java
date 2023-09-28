@@ -24,7 +24,7 @@ public class EmpresaController {
     private final SqsTemplate sqsTemplate;
 
 
-    public static final String QUEUE = "bootcamp";
+    public static final String QUEUE = "bootcamp-cielo.fifo";
     @Autowired
     private EmpresaService service;
 
