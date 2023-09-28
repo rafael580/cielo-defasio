@@ -17,7 +17,7 @@ public final class Cliente extends Usuario implements Serializable {
 
     private static final Long serialVersionUID = 1L;
 
-
+    @EqualsAndHashCode.Include
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

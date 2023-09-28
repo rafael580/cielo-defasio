@@ -35,9 +35,3 @@ potenciais invasores explorarem IDs previsíveis ou sequenciais para acessar rec
 
 Se você é um usuário de nossos sistemas, essa mudança não deve afetar significativamente a sua experiência.
 Você ainda poderá interagir com os recursos e informações da mesma maneira, mas com um nível aprimorado de segurança.
-
-## Recursos para Desenvolvedores:
-
-Se você é um desenvolvedor ou mantenedor de nossos sistemas, é importante atualizar seu código para lidar
-com os UUIDs em vez dos IDs long autoincrementados. Certifique-se de que todos os pontos de acesso estejam
-alinhados com essa mudança e que a lógica de autenticação e autorização seja devidamente ajustada.
