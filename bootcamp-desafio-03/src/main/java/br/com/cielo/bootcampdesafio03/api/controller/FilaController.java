@@ -1,4 +1,4 @@
-package br.com.cielo.bootcampdesafio03.api;
+package br.com.cielo.bootcampdesafio03.api.controller;
 
 import io.awspring.cloud.sqs.annotation.SqsListener;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +14,9 @@ public class FilaController {
     public static final String QUEUE = "bootcamp";
 
     @SqsListener(QUEUE)
-    @GetMapping(value = "/primeiro-da-fila-cliente")
+    @GetMapping
     public ResponseEntity<Object> firstElementRow(Object message){
         return ResponseEntity.ok().body(message);
     }
-
-
 
 }
