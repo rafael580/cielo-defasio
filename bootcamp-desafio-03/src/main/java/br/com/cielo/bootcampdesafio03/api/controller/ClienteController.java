@@ -43,6 +43,7 @@ public class ClienteController {
          public ResponseEntity<Object> firstElementRow(@Payload Object message){
         return ResponseEntity.ok().body(message);
         }
+
     @GetMapping
     public ResponseEntity<Page<ClienteDTO>> findAll(Pageable pageAble ){
         Page<ClienteDTO> list = service.findAllPaged(pageAble);
