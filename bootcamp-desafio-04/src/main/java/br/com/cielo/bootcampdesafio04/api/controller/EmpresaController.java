@@ -22,7 +22,6 @@ import java.net.URI;
 @RestController
 @RequestMapping("/empresas")
 @PreAuthorize("hasRole('ADMIN')")
-
 public class EmpresaController {
 
     private final SqsTemplate sqsTemplate;
@@ -54,7 +53,6 @@ public class EmpresaController {
 
     @PostMapping
     @PreAuthorize("hasAuthority('admin:create')")
-
     public ResponseEntity<EmpresaDTO> insert(@Valid @RequestBody EmpresaInsertDTO empresaInsertDTO){
         EmpresaDTO empresaDTO = service.insert(empresaInsertDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -67,7 +65,6 @@ public class EmpresaController {
     }
     @PutMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('admin:update')")
-
     public ResponseEntity<EmpresaDTO>  update( @PathVariable long id ,@Valid @RequestBody EmpresaUpdateDTO empresaUpdateDTO){
         EmpresaDTO empresaDTO = service.update(id,empresaUpdateDTO);
         sqsTemplate.send(to-> to.queue(QUEUE).payload(empresaDTO));
