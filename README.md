@@ -329,7 +329,7 @@ Faz a busca de todos os clientes e faz busca com filtragem
 
 http://localhost:8080/empresas/primeiro-da-fila-empresa
 
-![Sprint 2](/images/empresacheia.jpg)
+![Sprint 2](/images/cheia.jpg)
 
 
 #### 🟢 GET - Consultar FILA VAZIA
@@ -338,7 +338,7 @@ http://localhost:8080/empresas/primeiro-da-fila-empresa
 http://localhost:8080/empresas/primeiro-da-fila-empresa
 
 
-![Sprint 2](/images/empresavazia.jpg)
+![Sprint 2](/images/vazia.jpg)
 
 <br>
 <br>
