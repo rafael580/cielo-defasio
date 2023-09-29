@@ -36,23 +36,22 @@ public class EmpresaController {
     }
 
 
-    @GetMapping
     @PreAuthorize("hasAuthority('admin:read')")
+    @GetMapping
     public ResponseEntity<Page<EmpresaDTO>> findAll(Pageable pageAble ){
 
         Page<EmpresaDTO> list = service.findAllPaged(pageAble);
         return ResponseEntity.ok(list);
     }
-    @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('admin:read')")
-
+    @GetMapping(value = "/{id}")
     public ResponseEntity<EmpresaDTO> findById(@PathVariable Long id){
         EmpresaDTO obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
-    @PostMapping
     @PreAuthorize("hasAuthority('admin:create')")
+    @PostMapping
     public ResponseEntity<EmpresaDTO> insert(@Valid @RequestBody EmpresaInsertDTO empresaInsertDTO){
         EmpresaDTO empresaDTO = service.insert(empresaInsertDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -63,15 +62,15 @@ public class EmpresaController {
 
         return  ResponseEntity.created(uri).body(empresaDTO);
     }
-    @PutMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('admin:update')")
+    @PutMapping(value = "/{id}")
     public ResponseEntity<EmpresaDTO>  update( @PathVariable long id ,@Valid @RequestBody EmpresaUpdateDTO empresaUpdateDTO){
         EmpresaDTO empresaDTO = service.update(id,empresaUpdateDTO);
         sqsTemplate.send(to-> to.queue(QUEUE).payload(empresaDTO));
         return  ResponseEntity.ok().body(empresaDTO);
     }
-    @DeleteMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('admin:delete')")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         service.delete(id);
         return ResponseEntity.noContent().build();
