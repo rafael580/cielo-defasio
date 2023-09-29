@@ -104,7 +104,7 @@ Os endpoints para teste e acesso ao seus métodos HTTPs (GET, POST, PUT e DELETE
 ### Endpoint do Cliente :
 
 
-#### 🟢 GET - Consultar todas os cliente
+#### 🟢 GET - Consultar todas os clientes
 
 Faz a busca de todos os clientes e faz busca com filtragem
 
@@ -126,6 +126,7 @@ http://localhost:8080/clientes/{id}
 
 #### 🟡 POST - Criar um cliente
 
+http://localhost:8080/clientes
 
 {<br>
     "mcc":"0003",
@@ -143,7 +144,7 @@ http://localhost:8080/clientes/{id}
 
 #### 🔵  PUT - Atualizar dados do cliente
 
-
+http://localhost:8080/clientes/{id}
 
 {<br>
      "mcc":"0001",
@@ -162,15 +163,78 @@ http://localhost:8080/clientes/{id}
 http://localhost:8080/clientes/{id}
 
 
-![Sprint 1](/images/clientesdelete.jpg)
+![Sprint 1](/images/deletecliente.jpg)
+
+
+
+
+### Endpoint da Empresa :
+
+
+
+
+#### 🟢 GET - Consultar todas as empresas
+
+Faz a busca de todos os clientes e faz busca com filtragem
+
+GET : http://localhost:8080/empresas
+
+
+![Sprint 1](/images/empresas.jpg)
+
+
+#### 🟢 GET - Consultar uma empresda
+
+
+http://localhost:8080/empresas/{id}
+
+
+![Sprint 1](/images/empresaid.jpg)
+
+
+#### 🟡 POST - Criar uma empresa
+
+http://localhost:8080/empresas
+
+{<br>
+      	    "cnpj": "93412444322111",
+            "razaoSocial": "rafael",
+            "mcc": "0003",
+            "cpf": "23412449922",
+            "contratoEstabelecido": "contrato teste",
+            "emailEstabelecido": "emprea@gmail.com"
+}<br>
+
+
+![Sprint 1](/images/empresapost.jpg)
 
 
 
 
 
+#### 🔵  PUT - Atualizar dados de uma empresa
+
+http://localhost:8080/empresas/{id}
+
+{<br>
+            "cnpj": "23412444322111",
+            "razaoSocial": "rafael",
+            "mcc": "0003",
+            "cpf": "23412444422",
+            "contratoEstabelecido": "contrato teste",
+            "emailEstabelecido": "emprega@gmail.com"
+}<br>
+
+![Sprint 1](/images/empresaput.jpg)
 
 
 
+#### 🔴 DELETE - Deletar uma empresa
+
+http://localhost:8080/empresas/{id}
+
+
+![Sprint 1](/images/empresadelete.jpg)
 
 
 
