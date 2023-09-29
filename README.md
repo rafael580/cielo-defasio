@@ -117,7 +117,7 @@ GET : http://localhost:8080/clientes?page=0&pageSize=1&direction=DESC&orderBy=na
 #### 🟢 GET - Consultar um cliente 
 
 
-http://localhost:8080/clientes/{id}
+GET: http://localhost:8080/clientes/{id}
 
 
 ![Sprint 1](/images/clientesid.jpg)
@@ -126,13 +126,13 @@ http://localhost:8080/clientes/{id}
 
 #### 🟡 POST - Criar um cliente
 
-http://localhost:8080/clientes
+POST: http://localhost:8080/clientes
 
 {<br>
-    "mcc":"0003",
-    "cpf":"11625739619",
-    "nome": "rafael roco",
-    "email": "rafae.dev@mail.com"
+    <br>"mcc":"0003",<br>
+   <br> "cpf":"11625739619",<br>
+    <br>"nome": "rafael roco",<br>
+    <br>"email": "rafae.dev@mail.com"<br>
 }<br>
 
 
@@ -144,13 +144,13 @@ http://localhost:8080/clientes
 
 #### 🔵  PUT - Atualizar dados do cliente
 
-http://localhost:8080/clientes/{id}
+PUT: http://localhost:8080/clientes/{id}
 
 {<br>
-     "mcc":"0001",
-     "cpf":"99625739991",
-     "nome": "rafael roco",
-     "email": "rafae.dev@mail.com"
+    <br> "mcc":"0001",<br>
+     <br>"cpf":"99625739991",<br>
+     <br>"nome": "rafael roco",<br>
+    <br> "email": "rafae.dev@mail.com"<br>
 }<br>
 
 ![Sprint 1](/images/clientesput.jpg)
@@ -160,7 +160,7 @@ http://localhost:8080/clientes/{id}
 #### 🔴 DELETE - Deletar um cliente
 
 
-http://localhost:8080/clientes/{id}
+DELETE: http://localhost:8080/clientes/{id}
 
 
 ![Sprint 1](/images/deletecliente.jpg)
@@ -183,10 +183,10 @@ GET : http://localhost:8080/empresas
 ![Sprint 1](/images/empresas.jpg)
 
 
-#### 🟢 GET - Consultar uma empresda
+#### 🟢 GET - Consultar uma empresa
 
 
-http://localhost:8080/empresas/{id}
+GET: http://localhost:8080/empresas/{id}
 
 
 ![Sprint 1](/images/empresaid.jpg)
@@ -194,7 +194,7 @@ http://localhost:8080/empresas/{id}
 
 #### 🟡 POST - Criar uma empresa
 
-http://localhost:8080/empresas
+POST: http://localhost:8080/empresas
 
 {<br>
       	    "cnpj": "93412444322111",
@@ -214,7 +214,7 @@ http://localhost:8080/empresas
 
 #### 🔵  PUT - Atualizar dados de uma empresa
 
-http://localhost:8080/empresas/{id}
+PUT: http://localhost:8080/empresas/{id}
 
 {<br>
             "cnpj": "23412444322111",
@@ -231,13 +231,82 @@ http://localhost:8080/empresas/{id}
 
 #### 🔴 DELETE - Deletar uma empresa
 
-http://localhost:8080/empresas/{id}
+DELETE: http://localhost:8080/empresas/{id}
 
 
 ![Sprint 1](/images/empresadelete.jpg)
 
 
 
+![Sprint 2](/images/desafio2.jpg)
 
 
 
+# Desafio: Implementação de Fila de Atendimento em uma API
+
+Este projeto tem como objetivo atender a uma história de usuário específica que requer a implementação de uma fila de 
+atendimento para clientes prospect na área de Comercialização da Cielo. A fila deve seguir as regras especificadas na história de usuário.
+ Além disso, foram tomadas decisões de design específicas, explicadas a seguir:
+
+## Implementação de Fila Personalizada
+
+### Motivação
+- Para atender às regras de negócio da história de usuário, optou-se por implementar uma fila personalizada usando 
+tipos de dados primitivos em vez de utilizar as classes de fila disponíveis na biblioteca `java.util.*`.
+
+### Vantagens
+- Controle mais granular: Implementar uma fila personalizada permite um maior controle sobre como os elementos são adicionados 
+e removidos da fila, o que é importante para atender às regras específicas de entrada e saída.
+- Redução de dependências: Reduz a dependência de bibliotecas externas, mantendo o código mais leve e simples.
+- Maior entendimento: A implementação personalizada da fila pode ser mais clara e específica em relação aos requisitos do sistema.
+
+## Fila Separada para Clientes e Empresas
+
+### Motivação
+- Cada tipo de entidade (cliente e empresa) tem requisitos e características diferentes, incluindo a forma como são adicionados à fila e tratados.
+
+### Vantagens
+- Separação de preocupações: Ao manter filas separadas para clientes e empresas, é possível lidar com cada tipo de entidade de forma isolada, facilitando a manutenção e expansão futura.
+- Flexibilidade: Se as regras de negócio para clientes e empresas divergirem no futuro, as filas separadas podem ser modificadas independentemente.
+
+## Implementação de Endpoints Específicos
+
+### Motivação
+- Para cumprir a história de usuário, foi necessário criar endpoints específicos para lidar com a fila de atendimento para clientes e empresas.
+
+### Vantagens
+- Clareza e foco: Cada endpoint tem uma responsabilidade específica, tornando o código mais claro e fácil de entender.
+- Flexibilidade: Se os requisitos para a fila de clientes e empresas mudarem no futuro, é possível adaptar os endpoints independentemente.
+
+## Cobertura de Testes Unitários
+
+### Motivação
+- Testar o código é fundamental para garantir que ele funcione conforme o esperado e para facilitar futuras alterações e expansões.
+
+### Vantagens
+- Confiança: Os testes unitários garantem que o código esteja funcionando corretamente, evitando regressões.
+- Documentação viva: Os testes servem como documentação viva do comportamento do código, facilitando a compreensão para outros desenvolvedores.
+
+
+## EndPoint:
+Os endpoints para teste e acesso ao seu método HTTPs (GET)  são:
+
+### Endpoint da Cliente:
+
+
+#### 🟢 GET - Consultar FILA CHEIA
+
+Faz a busca de todos os clientes e faz busca com filtragem
+
+GET : http://localhost:8080/empresas/primeiro-da-fila-empresa
+
+![Sprint 1](/images/clientecheio.jpg)
+
+
+#### 🟢 GET - Consultar FILA VAZIA
+
+
+GET: http://localhost:8080/empresas/primeiro-da-fila-empresa
+
+
+![Sprint 1](/images/clientevazio.jpg)
