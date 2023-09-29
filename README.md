@@ -14,6 +14,6 @@ Esse projeto é o desafio final de programação do bootcamp da Cielo
 > Sprint 4       Status: Concluído ✅ <br><br>
 
 
-![Sprint 1](\images\SPT.jpg)
+![Sprint 1](\SPT.jpg)
 ![Sprint 1](\images\SPRINT1.2.jpg)
 
