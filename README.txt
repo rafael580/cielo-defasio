@@ -522,5 +522,90 @@ A implementação da solução envolverá o desenvolvimento de:
 - Configuração de expiração e renovação de tokens JWT para gerenciar o tempo de acesso dos usuários.
 - Registros de auditoria para monitorar e rastrear atividades de usuários.
 
+## EndPoint CLIENTE:
+
+VAI SER FEITO EUM EXEMPLO PARA O METODO GET, MAS SERVE PARA QUALQUER METODO HTTPS 
+
+
+
+
+#### 🟢 GET - Consultar todas os clientes SEM TOKEN
+
+Faz a busca de todos os clientes e faz busca com filtragem
+
+GET : http://localhost:8080/clientes?page=0&pageSize=1&direction=DESC&orderBy=name
+
+
+![Sprint 4](/images/semtoken.jpg)
+
+
+### 🟡 POST - Criar um Registro de Usuario
+
+POST: http://localhost:8080/api/v1/auth/register
+
+<br>
+{
+    <br>"firstname":"rafaelroco",<br>
+  <br>  "lastname":"shaday",<br>
+   <br> "email":"teste@gmail.com",<br>
+   <br> "password":"1234",<br>
+   <br> "role": "ADMIN"<br>
+}<br>
+
+![Sprint 4](/images/registro.jpg)
+
+
+### 🟡 POST - Criar um Autorizacao de Usuario
+
+
+POST: http://localhost:8080/api/v1/auth/authenticate
+
+<br>
+{<br>
+   <br> "email":"teste@gmail.com",<br>
+    <br>"password":"1234"<br>
+}<br>
+
+![Sprint 4](/images/autenticar.jpg)
+
+
+<br>
+<br>
+<br>
+
+
+#### 🟢 GET - Consultar todas os clientes COM TOKEN
+
+Faz a busca de todos os clientes e faz busca com filtragem
+
+GET : http://localhost:8080/clientes?page=0&pageSize=1&direction=DESC&orderBy=name
+
+
+![Sprint 4](/images/comtoken.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
