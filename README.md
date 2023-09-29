@@ -103,9 +103,76 @@ Os endpoints para teste e acesso ao seus métodos HTTPs (GET, POST, PUT e DELETE
 
 ### Endpoint do Cliente :
 
+
+#### 🟢 GET - Consultar todas os cliente
+
 Faz a busca de todos os clientes e faz busca com filtragem
 
 GET : http://localhost:8080/clientes?page=0&pageSize=1&direction=DESC&orderBy=name
+
+
+![Sprint 1](/images/clientesget.jpg)
+
+
+#### 🟢 GET - Consultar um cliente 
+
+
+http://localhost:8080/clientes/{id}
+
+
+![Sprint 1](/images/clientesid.jpg)
+
+
+
+#### 🟡 POST - Criar um cliente
+
+
+{<br>
+    "mcc":"0003",
+    "cpf":"11625739619",
+    "nome": "rafael roco",
+    "email": "rafae.dev@mail.com"
+}<br>
+
+
+![Sprint 1](/images/clientespost.jpg)
+
+
+
+
+
+#### 🔵  PUT - Atualizar dados do cliente
+
+
+
+{<br>
+     "mcc":"0001",
+     "cpf":"99625739991",
+     "nome": "rafael roco",
+     "email": "rafae.dev@mail.com"
+}<br>
+
+![Sprint 1](/images/clientesput.jpg)
+
+
+
+#### 🔴 DELETE - Deletar um cliente
+
+
+http://localhost:8080/clientes/{id}
+
+
+![Sprint 1](/images/clientesdelete.jpg)
+
+
+
+
+
+
+
+
+
+
 
 
 
