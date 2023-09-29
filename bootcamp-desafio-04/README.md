@@ -1,37 +1,60 @@
+# Uso do JWT para Melhorar a Segurança da Informação
 
-# README - Mudança para UUIDs para Mitigar Vulnerabilidade IDOR
+## Introdução
 
-Este documento descreve a mudança que estamos fazendo em nosso sistema de
-gerenciamento de IDs. Estamos adotando UUIDs (Universal Unique Identifiers) em vez
-de IDs autoincrementados long. Essa mudança visa mitigar a vulnerabilidade conhecida como IDOR (Insecure Direct Object References).
+Este readme explica como o uso de JSON Web Tokens (JWT) pode ser benéfico para melhorar a segurança da informação em uma aplicação. Abordaremos os seguintes pontos:
 
-## O que é o IDOR?
+- Identificação de um débito técnico de Segurança da Informação na aplicação.
+- Detalhamento do débito técnico identificado, incluindo criticidade e possíveis consequências.
+- Planejamento das atividades técnicas para o desenvolvimento da solução.
+- Implementação da solução utilizando JWT.
 
-A vulnerabilidade IDOR (Insecure Direct Object References) ocorre quando um aplicativo web permite
-que atacantes acessem objetos ou recursos diretamente, geralmente por meio de IDs previsíveis ou
-incrementados sequencialmente. Isso pode levar a sérios riscos de segurança, pois os atacantes
-podem acessar informações confidenciais ou executar ações não autorizadas.
+## a) Identificação de um débito técnico de Segurança da Informação
 
-## Por que estamos fazendo essa mudança?
+**Débito Técnico:** A aplicação atual não utiliza autenticação e autorização adequadas para proteger o acesso a recursos e informações sensíveis.
 
-Estamos adotando UUIDs como identificadores exclusivos em nossos sistemas para evitar a vulnerabilidade
-IDOR. Os UUIDs são valores de 128 bits que são únicos em escala global e, portanto, não podem ser previstos ou adivinhados por atacantes.
+## b) Detalhamento do débito técnico
 
-Ao fazer essa mudança, estamos reforçando a segurança dos nossos sistemas, tornando mais difícil para
-potenciais invasores explorarem IDs previsíveis ou sequenciais para acessar recursos ou informações não autorizados.
+**Criticidade:** Alta
 
-## Benefícios da mudança para UUIDs:
+**Possíveis Consequências:**
+1. **Vazamento de Dados:** Sem autenticação, qualquer usuário pode acessar informações confidenciais.
+2. **Integridade Comprometida:** Os dados podem ser modificados por usuários não autorizados.
+3. **Acesso não Autorizado:** Usuários mal-intencionados podem executar ações não permitidas.
+4. **Não Rastreabilidade:** A falta de autenticação torna difícil rastrear quem acessou os recursos.
 
-- **Maior Segurança**: Os UUIDs são difíceis de prever, tornando nossos sistemas mais seguros contra
-  vulnerabilidades IDOR.
+## c) Planejamento das atividades técnicas para a solução
 
-- **Privacidade e Confidencialidade**: A mudança para UUIDs ajuda a proteger informações confidenciais,
-  garantindo que apenas os usuários autorizados possam acessá-las.
+Para solucionar esse débito técnico e melhorar a segurança da informação, podemos seguir estas etapas:
 
-- **Menos Suscetibilidade a Ataques**: Ao eliminar a previsibilidade dos IDs, reduzimos a exposição
-  a ataques que exploram IDs previsíveis ou sequenciais.
+**1. Implementação da Autenticação e Autorização:**
 
-## Como isso afeta você:
+- Utilizar JWT (JSON Web Tokens) para autenticar usuários.
+- Definir papéis e permissões para os usuários (por exemplo, admin, usuário regular).
+- Criar um sistema de gerenciamento de sessões.
 
-Se você é um usuário de nossos sistemas, essa mudança não deve afetar significativamente a sua experiência.
-Você ainda poderá interagir com os recursos e informações da mesma maneira, mas com um nível aprimorado de segurança.
+**2. Configuração de Expiração e Renovação:**
+
+- Definir tempos de expiração para os tokens JWT para limitar o acesso.
+- Implementar renovação de tokens para evitar que os usuários sejam desconectados frequentemente.
+
+**3. Proteção de Recursos Sensíveis:**
+
+- Garantir que apenas usuários autenticados e autorizados tenham acesso a recursos sensíveis.
+- Implementar controle de acesso baseado em papéis para garantir que apenas usuários com permissões adequadas possam executar ações específicas.
+
+**4. Monitoramento e Registro:**
+
+- Implementar registros de auditoria para rastrear atividades de usuários.
+- Configurar alertas para atividades suspeitas.
+
+## d) Implementação da solução
+
+A implementação da solução envolverá o desenvolvimento de:
+
+- Um sistema de autenticação que emite tokens JWT após a autenticação do usuário.
+- Um sistema de autorização que verifica as permissões do usuário com base no token JWT.
+- Controles de acesso a recursos sensíveis para garantir que apenas usuários autorizados possam acessá-los.
+- Configuração de expiração e renovação de tokens JWT para gerenciar o tempo de acesso dos usuários.
+- Registros de auditoria para monitorar e rastrear atividades de usuários.
+
