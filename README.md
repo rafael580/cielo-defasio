@@ -238,7 +238,7 @@ DELETE: http://localhost:8080/empresas/{id}
 
 
 
-![Sprint 2](/images/desafio2.jpg)
+![Sprint 2](/images/desafio1.jpg)
 
 
 
@@ -298,7 +298,7 @@ Os endpoints para teste e acesso ao seu método HTTPs (GET)  são:
 
 Faz a busca de todos os clientes e faz busca com filtragem
 
-GET : http://localhost:8080/empresas/primeiro-da-fila-empresa
+http://localhost:8080/clientes/primeiro-da-fila-cliente
 
 ![Sprint 1](/images/clientecheio.jpg)
 
@@ -306,7 +306,30 @@ GET : http://localhost:8080/empresas/primeiro-da-fila-empresa
 #### 🟢 GET - Consultar FILA VAZIA
 
 
-GET: http://localhost:8080/empresas/primeiro-da-fila-empresa
+http://localhost:8080/clientes/primeiro-da-fila-cliente
 
 
 ![Sprint 1](/images/clientevazio.jpg)
+
+
+### Endpoint da Cliente:
+
+
+#### 🟢 GET - Consultar FILA CHEIA
+
+Faz a busca de todos os clientes e faz busca com filtragem
+
+http://localhost:8080/empresas/primeiro-da-fila-empresa
+
+![Sprint 1](/images/empresacheia.jpg)
+
+
+#### 🟢 GET - Consultar FILA VAZIA
+
+
+http://localhost:8080/empresas/primeiro-da-fila-empresa
+
+
+![Sprint 1](/images/empresavazia.jpg)
+
+
