@@ -33,6 +33,9 @@ Esse projeto é o desafio final de programação do bootcamp da Cielo
 
 
 ![Sprint 1](/images/SPT.jpg)
+
+
+
 ![Sprint 1](/images/SPRINT1.2.jpg)
 
 
@@ -236,7 +239,12 @@ DELETE: http://localhost:8080/empresas/{id}
 
 ![Sprint 1](/images/empresadelete.jpg)
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ![Sprint 2](/images/desafio1.jpg)
 
@@ -300,7 +308,7 @@ Faz a busca de todos os clientes e faz busca com filtragem
 
 http://localhost:8080/clientes/primeiro-da-fila-cliente
 
-![Sprint 1](/images/clientecheio.jpg)
+![Sprint 2](/images/clientecheio.jpg)
 
 
 #### 🟢 GET - Consultar FILA VAZIA
@@ -309,10 +317,10 @@ http://localhost:8080/clientes/primeiro-da-fila-cliente
 http://localhost:8080/clientes/primeiro-da-fila-cliente
 
 
-![Sprint 1](/images/clientevazio.jpg)
+![Sprint 2](/images/clientevazio.jpg)
 
 
-### Endpoint da Cliente:
+### Endpoint da Empresa:
 
 
 #### 🟢 GET - Consultar FILA CHEIA
@@ -321,7 +329,7 @@ Faz a busca de todos os clientes e faz busca com filtragem
 
 http://localhost:8080/empresas/primeiro-da-fila-empresa
 
-![Sprint 1](/images/empresacheia.jpg)
+![Sprint 2](/images/empresacheia.jpg)
 
 
 #### 🟢 GET - Consultar FILA VAZIA
@@ -330,6 +338,124 @@ http://localhost:8080/empresas/primeiro-da-fila-empresa
 http://localhost:8080/empresas/primeiro-da-fila-empresa
 
 
-![Sprint 1](/images/empresavazia.jpg)
+![Sprint 2](/images/empresavazia.jpg)
+
+<br>
+<br>
+<br>
+<br>
+
+![Sprint 3](/images/desafio3.jpg)
+
+
+<br>
+<br>
+
+
+
+# Fila de Atendimento com AWS SQS
+
+Este projeto descreve a implementação de uma fila de atendimento compartilhada entre clientes e empresas utilizando o Amazon Simple Queue Service (SQS) da AWS.
+
+## Motivação
+### Problema de Escalabilidade
+Identificamos a necessidade de uma solução robusta para lidar com o crescimento da fila de atendimento, que agora inclui tanto clientes quanto empresas.
+
+### Perda de Dados
+A aplicação original armazenava dados de clientes e empresas em memória, resultando na perda de dados ao reiniciar a aplicação.
+
+## Vantagens do Amazon SQS
+- **Elasticidade:** O SQS é altamente escalável, adaptando-se automaticamente às demandas sem necessidade de provisionamento manual.
+- **Persistência de Dados:** Mensagens na fila SQS são armazenadas de forma durável e segura.
+- **Alta Disponibilidade:** O SQS é gerenciado pela AWS e oferece alta disponibilidade.
+- **Integração com a AWS:** Permite integração com outras soluções AWS, como AWS Lambda, Amazon S3 e Amazon EC2.
+
+
+## EndPoint CLIENTE:
+
+Os endpoints para teste e acesso aos seu métodos HTTPs (POST,PUT)  são:
+
+#### 🟡 POST - Criar um cliente
+
+
+POST: http://localhost:8080/clientes
+
+{<br>
+    <br>"mcc":"0003",<br>
+   <br> "cpf":"11625739619",<br>
+    <br>"nome": "rafael roco",<br>
+    <br>"email": "rafae.dev@mail.com"<br>
+}<br>
+
+
+![Sprint 3](/images/clientespost3.jpg)
+
+Resultado 
+
+![Sprint 3](/images/resultadopost3.jpg)
+
+#### 🔵  PUT - Atualizar dados do cliente
+
+PUT: http://localhost:8080/clientes/{id}
+
+{<br>
+    <br> "mcc":"0001",<br>
+     <br>"cpf":"99625739991",<br>
+     <br>"nome": "rafael roco",<br>
+    <br> "email": "rafae.dev@mail.com"<br>
+}<br>
+
+![Sprint 1](/images/clientesput3.jpg)
+
+Resultado 
+
+![Sprint 3](/images/resultadoput3.jpg)
+
+
+## EndPoint EMPRESA
+
+Os endpoints para teste e acesso aos seu métodos HTTPs (POST,PUT)  são:
+
+
+POST: http://localhost:8080/empresas
+
+{<br>
+   	    "cnpj": "93412444322111",
+            "razaoSocial": "rafael",
+            "mcc": "0003",
+            "cpf": "23412449922",
+            "contratoEstabelecido": "contrato teste",
+            "emailEstabelecido": "emprea@gmail.com"
+}<br>
+
+
+![Sprint 3](/images/empresasqs.jpg)
+
+Resultado 
+
+![Sprint 3](/images/empresasqs3.jpg)
+
+#### 🔵  PUT - Atualizar dados do cliente
+
+PUT: http://localhost:8080/empresas/{id}
+
+{<br>
+    <br> "mcc":"0001",<br>
+     <br>"cpf":"99625739991",<br>
+     <br>"nome": "rafael roco",<br>
+    <br> "email": "rafae.dev@mail.com"<br>
+}<br>
+
+![Sprint 3](/images/sqsempresa.jpg)
+
+Resultado 
+
+![Sprint 3](/images/sqsempresa3.jpg)
+
+
+
+
+
+
 
 
